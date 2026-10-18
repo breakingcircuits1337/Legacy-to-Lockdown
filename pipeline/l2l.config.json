@@ -12,7 +12,7 @@
   },
 
   "project_name": "InventoryTracker",
-  "target_repo_path": "../inventory-tracker",
+  "target_repo_path": "/home/kbun/Desktop/lab/InventoryTracker Demo Target",
 
   "source_stack": {
     "java_version": "8",

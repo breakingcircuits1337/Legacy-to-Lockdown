@@ -252,8 +252,8 @@
 // Constants
 // ─────────────────────────────────────────────────────────────────────────────
 
-const SCORES_DIR   = "pipeline/scores";
-const LEDGER_PATH  = "pipeline/L2L_CHANGE_LEDGER.json";
+const SCORES_DIR   = "../pipeline/scores";
+const LEDGER_PATH  = "../pipeline/L2L_CHANGE_LEDGER.json";
 const REFRESH_MS   = 30_000;
 
 const BAND_COLOR = (score) => {
@@ -389,9 +389,10 @@ function updateHero(scoreData, project) {
 
 function updateHistoryChart(scoreFiles) {
   const labels = scoreFiles.map((f) => {
-    // Extract date portion: score_2026-10-18T12-00-00Z.json → 10-18 12:00
-    const m = f.match(/score_(\d{4})-(\d{2})-(\d{2})T(\d{2})-(\d{2})/);
-    return m ? `${m[2]}-${m[3]} ${m[4]}:${m[5]}` : f.replace("score_", "").replace(".json", "");
+    // Extract date portion from filename: score_2026-10-18T12-00-00Z.json → 10-18 12:00
+    const name = f._filename || "";
+    const m = name.match(/score_(\d{4})-(\d{2})-(\d{2})T(\d{2})-(\d{2})/);
+    return m ? `${m[2]}-${m[3]} ${m[4]}:${m[5]}` : name.replace("score_", "").replace(".json", "");
   });
   const scores = scoreFiles.map((f) => f._score);
   const color = scores.length ? BAND_COLOR(scores[scores.length - 1]) : "#4a9eff";

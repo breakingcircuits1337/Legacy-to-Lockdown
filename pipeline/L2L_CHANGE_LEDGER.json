@@ -1,0 +1,79 @@
+{
+  "generated": "2026-10-18T09:38:30+00:00",
+  "project": "InventoryTracker",
+  "summary": {
+    "modules_migrated": 6,
+    "cves_remediated": 6,
+    "score_baseline": 23,
+    "score_final": 92,
+    "score_delta": 69
+  },
+  "entries": [
+    {
+      "phase": "TRANSFORM",
+      "module": "Framework",
+      "summary": "Spring Boot 3.2, Java 17, WAR\u2192JAR, Boot auto-config",
+      "cves_remediated": [],
+      "commit_sha": "b2a54a3d9f4b1534c6d1395a455cc3454c8d4dd4"
+    },
+    {
+      "phase": "TRANSFORM",
+      "module": "Dependencies",
+      "summary": "4 CVEs remediated",
+      "cves_remediated": [
+        "CVE-2019-17571",
+        "CVE-2015-6420",
+        "CVE-2019-14379",
+        "CVE-2021-42392"
+      ],
+      "commit_sha": "f850d7d249a43eb71191a74c175ae583f8b656fd"
+    },
+    {
+      "phase": "VERIFY",
+      "module": "ProductController",
+      "summary": "ProductControllerContractTest 19/19 pass; full suite 71/71",
+      "cves_remediated": [],
+      "commit_sha": "cbb20d60406965f48adb3664788580991c3449f2"
+    },
+    {
+      "phase": "TRANSFORM",
+      "module": "ProductController",
+      "summary": "SQL injection fix, CC reduction, REST API, export-token fix, javax\u2192jakarta",
+      "cves_remediated": [
+        "CWE-89"
+      ],
+      "commit_sha": "4891477ddd13a0200a188c8a99f88832c1a62351"
+    },
+    {
+      "phase": "VERIFY",
+      "module": "ProductService",
+      "summary": "ProductServiceContractTest 15/15 pass",
+      "cves_remediated": [],
+      "commit_sha": "39aae0b9d9dabcca914fcfe129876a5db879457e"
+    },
+    {
+      "phase": "VERIFY",
+      "module": "ProductDao",
+      "summary": "ProductDaoContractTest 13/13 pass; spring-test + mockito added to pom",
+      "cves_remediated": [],
+      "commit_sha": "080258abce64c4add5597545c803af24128d7236"
+    },
+    {
+      "phase": "VERIFY",
+      "module": "StringUtils",
+      "summary": "StringUtilsContractTest 24/24 pass; SLF4J logger applied to remaining modules; JUnit 5 + surefire added to pom",
+      "cves_remediated": [],
+      "commit_sha": "f274341a9d439c80a306038644be03e662668f62"
+    },
+    {
+      "phase": "TRANSFORM",
+      "module": "StringUtils",
+      "summary": "remove deserializeState RCE, SLF4J logger",
+      "cves_remediated": [
+        "CVE-2019-17571",
+        "CVE-2022-23302"
+      ],
+      "commit_sha": "4c014997ba31715165b7a2ebc489caacbdf6e793"
+    }
+  ]
+}

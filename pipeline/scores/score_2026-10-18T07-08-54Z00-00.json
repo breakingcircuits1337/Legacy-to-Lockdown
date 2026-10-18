@@ -1,0 +1,19 @@
+{
+  "score": 23,
+  "breakdown": {
+    "cve_score": 12,
+    "test_score": 0,
+    "api_score": 0,
+    "complexity_score": 11,
+    "framework_score": 0
+  },
+  "label": "Critical",
+  "timestamp": "2026-10-18T07:08:54+00:00",
+  "inputs": {
+    "cve_count": 6,
+    "test_coverage": 0.0,
+    "api_coverage": 0.0,
+    "complexity_violations": 2,
+    "framework_current": false
+  }
+}
