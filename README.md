@@ -83,4 +83,4 @@ Step 5 — verify it:
   runs mvn test from ../inventory-tracker/,
   reports results back into the l2l/ chat session.
 
-  Baseline Score: 23 / 100 — 🔴 Critical    ----- 92/100 final score
+  Baseline Score: 23 / 100 — 🔴 Critical    ----- 92/100 final score     https://github.com/breakingcircuits1337/InventoryTracker-Demo-Target is the modernized version from the demo.
