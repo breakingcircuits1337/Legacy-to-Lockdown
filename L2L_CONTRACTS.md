@@ -93,3 +93,41 @@
 | PC-11 | `POST /api/products` with blank SKU returns HTTP 400 |
 | PC-12 | `PUT /api/products/{id}` with a valid JSON body returns HTTP 200 |
 | PC-13 | `PATCH /api/products/{id}/stock` with a delta that produces negative stock returns HTTP 422 |
+
+---
+
+## Module 6 — `pom.xml` / Dependencies
+
+**Source file:** `pom.xml`  
+**Transform date:** 2026-10-18  
+**Commit subject:** `L2L[TRANSFORM]: Dependencies — 4 CVEs remediated — CVEs: CVE-2019-17571,CVE-2015-6420,CVE-2019-14379,CVE-2021-42392`
+
+| ID    | Contract |
+|-------|----------|
+| DEP-01 | `log4j:log4j` does not appear anywhere in pom.xml after transform |
+| DEP-02 | `commons-collections:commons-collections:3.2.1` is replaced by `org.apache.commons:commons-collections4:4.4` |
+| DEP-03 | `jackson-databind` version is `2.15.3` or higher; `2.9.5` does not appear |
+| DEP-04 | `h2` version is `2.2.224`; `1.4.196` does not appear |
+| DEP-05 | `mvn dependency:resolve` exits 0 — all declared dependencies resolve successfully |
+| DEP-06 | `mvn test` exits 0 — all 71 existing contract tests still pass after dependency changes |
+
+---
+
+## Module 6b — Framework Migration (Spring Boot 3.2 / Java 17 / JAR)
+
+**Files:** `pom.xml`, `src/main/resources/application.properties`, `src/main/java/com/acme/inventory/InventoryTrackerApplication.java` (new)  
+**Transform date:** 2026-10-18  
+**Commit subject:** `L2L[TRANSFORM]: Framework — Spring Boot 3.2, Java 17, WAR→JAR, Boot auto-config — CVEs: NONE`
+
+| ID    | Contract |
+|-------|----------|
+| FW-01 | `<packaging>` is `jar`, not `war` |
+| FW-02 | `spring-boot-starter-parent 3.2.x` is the project parent |
+| FW-03 | `<java.version>` is `17` |
+| FW-04 | `spring-webmvc`, `spring-jdbc`, `spring-context` explicit deps are removed — inherited from Boot BOM |
+| FW-05 | `spring-boot-starter-web` and `spring-boot-starter-jdbc` are present |
+| FW-06 | `slf4j-api` and `slf4j-simple` explicit deps removed — Boot BOM provides Logback |
+| FW-07 | `spring-boot-maven-plugin` present in build; `tomcat7-maven-plugin` removed |
+| FW-08 | `application.properties` contains `spring.datasource.*` keys Boot recognises |
+| FW-09 | A `@SpringBootApplication` main class exists at `com.acme.inventory.InventoryTrackerApplication` |
+| FW-10 | `mvn test` exits 0 — all existing contract tests pass under Spring Boot 3.2 |
