@@ -20,3 +20,11 @@ Thumbs.db
 dist/
 build/
 target/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# L2L generated scores (committed intentionally — do not ignore)

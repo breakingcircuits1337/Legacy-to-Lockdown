@@ -1,0 +1,19 @@
+{
+  "score": 67,
+  "breakdown": {
+    "cve_score": 30,
+    "test_score": 18,
+    "api_score": 10,
+    "complexity_score": 9,
+    "framework_score": 0
+  },
+  "label": "Modernizing",
+  "timestamp": "2026-10-18T02:38:52+00:00",
+  "inputs": {
+    "cve_count": 0,
+    "test_coverage": 0.72,
+    "api_coverage": 0.5,
+    "complexity_violations": 3,
+    "framework_current": false
+  }
+}

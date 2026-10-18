@@ -1,36 +1,40 @@
 {
-  "_comment": "L2L pipeline configuration — edit this file for each target repo.",
-  "project": {
-    "name": "REPLACE_WITH_PROJECT_NAME",
-    "repo": "REPLACE_WITH_REPO_URL",
-    "java_version": "REPLACE_WITH_JAVA_VERSION",
-    "build_tool": "maven"
+  "_comments": {
+    "project_name":             "Human-readable name for this migration project.",
+    "target_repo_path":         "Relative path from this L2L repo root to the legacy app repo.",
+    "source_stack":             "Describes what the app is built on TODAY — do not change after audit.",
+    "target_stack":             "Describes the modernization target — what you are migrating TO.",
+    "scoring.cve_weight":       "Max points awarded for resolving all CVEs found during audit (0-100, weights must sum to 100).",
+    "scoring.test_coverage_weight": "Max points for reaching 100% contract test coverage.",
+    "scoring.api_enablement_weight": "Max points for full REST API surface alongside legacy controllers.",
+    "scoring.complexity_weight":    "Max points for eliminating all cyclomatic complexity violations.",
+    "scoring.framework_currency_weight": "Max points for completing the framework migration to target_stack."
   },
-  "pipeline": {
-    "phase": "AUDIT",
-    "current_module": null,
-    "modules_completed": [],
-    "modules_remaining": []
+
+  "project_name": "InventoryTracker",
+  "target_repo_path": "../inventory-tracker",
+
+  "source_stack": {
+    "java_version": "8",
+    "framework": "Spring MVC",
+    "framework_version": "4.3.30",
+    "logging": "Log4j 1.2.17",
+    "build": "Maven WAR"
   },
-  "thresholds": {
-    "max_class_lines": 500,
-    "max_method_lines": 50,
-    "max_cyclomatic_complexity": 10,
-    "max_inheritance_depth": 4,
-    "min_coverage_percent": 70
+
+  "target_stack": {
+    "java_version": "17",
+    "framework": "Spring Boot",
+    "framework_version": "3.2.x",
+    "logging": "SLF4J + Logback",
+    "build": "Maven JAR"
   },
-  "test_framework": "junit5",
-  "mock_framework": "mockito",
-  "target_dependencies": [],
-  "api_migrations": {
-    "java.util.Date": "java.time.LocalDate / Instant",
-    "javax.servlet": "jakarta.servlet",
-    "javax.persistence": "jakarta.persistence",
-    "javax.validation": "jakarta.validation"
-  },
-  "score": {
-    "baseline": null,
-    "current": null,
-    "last_updated": null
+
+  "scoring": {
+    "cve_weight":               30,
+    "test_coverage_weight":     25,
+    "api_enablement_weight":    20,
+    "complexity_weight":        15,
+    "framework_currency_weight": 10
   }
 }
