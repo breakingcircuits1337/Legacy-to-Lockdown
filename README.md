@@ -41,3 +41,44 @@ Notes
     Bob modes are workspace-scoped (.bob/custom_modes.yaml), so installing L2L into a target repo makes the modes available only in that workspace.
     Never edit source Java directly in /l2l-audit mode — it is read-only.
     TRANSFORM gates: each module must pass VERIFY before the next begins.
+## How to Point L2L at Your Own App
+1. Clone this repo
+2. Edit pipeline/l2l.config.json with your target path
+3. Open l2l/ in Bob IDE
+
+here are the next steps
+Step 0 — one-time setup:
+  Edit pipeline/l2l.config.json:
+    "target_repo_path": "../inventory-tracker"
+  
+  That's the only file you touch to point L2L at any target.
+
+Step 1 — bootstrap Bob's context:
+  /init
+
+Step 2 — run the audit:
+  /l2l-audit
+
+  Bob reads l2l.config.json, finds ../inventory-tracker,
+  reads its pom.xml and src/ tree, runs score.py,
+  writes L2L_AUDIT_REPORT.md into l2l/ (not into the target).
+
+Step 3 — generate the migration plan:
+  /plan
+  Read l2l.config.json and L2L_AUDIT_REPORT.md,
+  then generate L2L_MIGRATION_PLAN.md here in l2l/.
+
+Step 4 — transform a module:
+  /l2l-transform ProductController
+
+  Bob reads ../inventory-tracker/src/.../ProductController.java,
+  edits it IN PLACE in the target repo,
+  writes contracts to l2l/L2L_CONTRACTS.md,
+  stages the commit in the TARGET repo's git history.
+
+Step 5 — verify it:
+  /l2l-verify ProductController
+
+  Bob writes the test file to ../inventory-tracker/src/test/...,
+  runs mvn test from ../inventory-tracker/,
+  reports results back into the l2l/ chat session.
