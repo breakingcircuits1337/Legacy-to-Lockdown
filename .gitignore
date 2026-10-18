@@ -1,0 +1,22 @@
+# Bob-managed directories
+.bob/tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Secrets
+.env
+*.pem
+*.key
+
+# Build artifacts (if any tooling is added)
+dist/
+build/
+target/

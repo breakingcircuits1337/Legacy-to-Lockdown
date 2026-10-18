@@ -1,0 +1,36 @@
+{
+  "_comment": "L2L pipeline configuration — edit this file for each target repo.",
+  "project": {
+    "name": "REPLACE_WITH_PROJECT_NAME",
+    "repo": "REPLACE_WITH_REPO_URL",
+    "java_version": "REPLACE_WITH_JAVA_VERSION",
+    "build_tool": "maven"
+  },
+  "pipeline": {
+    "phase": "AUDIT",
+    "current_module": null,
+    "modules_completed": [],
+    "modules_remaining": []
+  },
+  "thresholds": {
+    "max_class_lines": 500,
+    "max_method_lines": 50,
+    "max_cyclomatic_complexity": 10,
+    "max_inheritance_depth": 4,
+    "min_coverage_percent": 70
+  },
+  "test_framework": "junit5",
+  "mock_framework": "mockito",
+  "target_dependencies": [],
+  "api_migrations": {
+    "java.util.Date": "java.time.LocalDate / Instant",
+    "javax.servlet": "jakarta.servlet",
+    "javax.persistence": "jakarta.persistence",
+    "javax.validation": "jakarta.validation"
+  },
+  "score": {
+    "baseline": null,
+    "current": null,
+    "last_updated": null
+  }
+}
